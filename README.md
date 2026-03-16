@@ -1,6 +1,6 @@
-# lfa
+# Linguagens Formais e Automatos
 
-Repositório voltado para projetos e exercícios da disciplina de **Linguagens Formais de Automatos**.
+Repositório voltado para projetos e exercícios da disciplina de **Linguagens Formais e Automatos**.
 
 O conteúdo está organizado em duas categorias principais:
 
