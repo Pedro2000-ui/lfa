@@ -22,6 +22,32 @@ class TDF
     loop do
       case [proximo, estado]
 
+      # --- Milhar ---
+      in ["M", "q0"]    ; estado = "qM"
+      in ["M", "qM"]    ; estado = "qMM"
+      in ["M", "qMM"]   ; estado = "qMMM"
+      in ["C", "qM"]    ; retorno += "1" ; estado = "qC" ; @indice += 1 ; next
+      in ["D", "qM"]    ; retorno += "1" ; estado = "qD" ; @indice += 1 ; next
+      in ["X", "qM"]    ; retorno += "10" ; estado = "qX" ; @indice += 1 ; next
+      in ["L", "qM"]    ; retorno += "10" ; estado = "qL" ; @indice += 1 ; next
+      in ["I", "qM"]    ; retorno += "100" ; estado = "qI" ; @indice += 1 ; next
+      in ["V", "qM"]    ; retorno += "100" ; estado = "qV" ; @indice += 1 ; next
+      in ["", "qM"]     ; retorno += "1" ; puts "Aceito: #{@cadeia} = #{retorno.to_i}000" ; break
+      in ["C", "qMM"]   ; retorno += "2" ; estado = "qC" ; @indice += 1 ; next
+      in ["D", "qMM"]   ; retorno += "2" ; estado = "qD" ; @indice += 1 ; next
+      in ["X", "qMM"]   ; retorno += "20" ; estado = "qX" ; @indice += 1 ; next
+      in ["L", "qMM"]   ; retorno += "20" ; estado = "qL" ; @indice += 1 ; next
+      in ["I", "qMM"]   ; retorno += "200" ; estado = "qI" ; @indice += 1 ; next
+      in ["V", "qMM"]   ; retorno += "200" ; estado = "qV" ; @indice += 1 ; next
+      in ["", "qMM"]    ; retorno += "2" ; puts "Aceito: #{@cadeia} = #{retorno.to_i}000" ; break
+      in ["C", "qMMM"]  ; retorno += "3" ; estado = "qC" ; @indice += 1 ; next
+      in ["D", "qMMM"]  ; retorno += "3" ; estado = "qD" ; @indice += 1 ; next
+      in ["X", "qMMM"]  ; retorno += "30" ; estado = "qX" ; @indice += 1 ; next
+      in ["L", "qMMM"]  ; retorno += "30" ; estado = "qL" ; @indice += 1 ; next
+      in ["I", "qMMM"]  ; retorno += "300" ; estado = "qI" ; @indice += 1 ; next
+      in ["V", "qMMM"]  ; retorno += "300" ; estado = "qV" ; @indice += 1 ; next
+      in ["", "qMMM"]   ; retorno += "3" ; puts "Aceito: #{@cadeia} = #{retorno.to_i}000" ; break
+
       # --- Centenas ---
       in ["C", "q0"]     ; estado = "qC"
       in ["D", "q0"]     ; estado = "qD"
@@ -147,7 +173,7 @@ class TDF
   end
 end
 
-print "Digite o número romano (I a CMXCIX): "
+print "Digite o número romano (até 3999): "
 entrada = gets.chomp
 
 tdf = TDF.new(entrada)
