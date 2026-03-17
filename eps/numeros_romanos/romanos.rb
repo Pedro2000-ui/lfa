@@ -22,6 +22,62 @@ class TDF
     loop do
       case [proximo, estado]
 
+      # --- Centenas ---
+      in ["C", "q0"]     ; estado = "qC"
+      in ["D", "q0"]     ; estado = "qD"
+      in ["D", "qC"]     ; retorno += "4" ; estado = "qCD"
+      in ["M", "qC"]     ; retorno += "9" ; estado = "qCM"
+      in ["C", "qC"]     ; estado = "qCC"
+      in ["X", "qC"]     ; retorno += "1" ; estado = "qX" ; @indice += 1 ; next
+      in ["L", "qC"]     ; retorno += "1" ; estado = "qL" ; @indice += 1 ; next
+      in ["I", "qC"]     ; retorno += "10" ; estado = "qI" ; @indice += 1 ; next
+      in ["V", "qC"]     ; retorno += "10" ; estado = "qV" ; @indice += 1 ; next
+      in ["", "qC"]      ; retorno += "1" ; puts "Aceito: #{@cadeia} = #{retorno.to_i}00" ; break
+      in ["C", "qCC"]    ; estado = "qCCC"
+      in ["X", "qCC"]    ; retorno += "2" ; estado = "qX" ; @indice += 1 ; next
+      in ["L", "qCC"]    ; retorno += "2" ; estado = "qL" ; @indice += 1 ; next
+      in ["I", "qCC"]    ; retorno += "2" ; estado = "qI" ; @indice += 1 ; next
+      in ["V", "qCC"]    ; retorno += "2" ; estado = "qV" ; @indice += 1 ; next
+      in ["", "qCC"]     ; retorno += "2" ; puts "Aceito: #{@cadeia} = #{retorno.to_i}00" ; break
+      in ["X", "qCCC"]   ; retorno += "3" ; estado = "qX" ; @indice += 1 ; next
+      in ["L", "qCCC"]   ; retorno += "3" ; estado = "qL" ; @indice += 1 ; next
+      in ["I", "qCCC"]   ; retorno += "3" ; estado = "qI" ; @indice += 1 ; next
+      in ["V", "qCCC"]   ; retorno += "3" ; estado = "qV" ; @indice += 1 ; next
+      in ["", "qCCC"]    ; retorno += "3" ; puts "Aceito: #{@cadeia} = #{retorno.to_i}00" ; break
+      in ["X", "qD"]     ; retorno += "5" ; estado = "qX" ; @indice += 1 ; next
+      in ["L", "qD"]     ; retorno += "5" ; estado = "qL" ; @indice += 1 ; next
+      in ["I", "qD"]     ; retorno += "50" ; estado = "qI" ; @indice += 1 ; next
+      in ["V", "qD"]     ; retorno += "50" ; estado = "qV" ; @indice += 1 ; next
+      in ["", "qD"]      ; retorno += "5" ; puts "Aceito: #{@cadeia} = #{retorno.to_i}00" ; break
+      in ["C", "qD"]     ; estado = "qDC"
+      in ["C", "qDC"]    ; estado = "qDCC"
+      in ["C", "qDCC"]   ; estado = "qDCCC"
+      in ["X", "qDC"]    ; retorno += "6" ; estado = "qX" ; @indice += 1 ; next
+      in ["L", "qDC"]    ; retorno += "6" ; estado = "qL" ; @indice += 1 ; next
+      in ["I", "qDC"]    ; retorno += "6" ; estado = "qI" ; @indice += 1 ; next
+      in ["V", "qDC"]    ; retorno += "6" ; estado = "qV" ; @indice += 1 ; next
+      in ["", "qDC"]     ; retorno += "6" ; puts "Aceito: #{@cadeia} = #{retorno.to_i}00" ; break
+      in ["X", "qDCC"]   ; retorno += "7" ; estado = "qX" ; @indice += 1 ; next
+      in ["L", "qDCC"]   ; retorno += "7" ; estado = "qL" ; @indice += 1 ; next
+      in ["I", "qDCC"]   ; retorno += "7" ; estado = "qI" ; @indice += 1 ; next
+      in ["V", "qDCC"]   ; retorno += "7" ; estado = "qV" ; @indice += 1 ; next
+      in ["", "qDCC"]    ; retorno += "7" ; puts "Aceito: #{@cadeia} = #{retorno.to_i}00" ; break
+      in ["X", "qDCCC"]  ; retorno += "8" ; estado = "qX" ; @indice += 1 ; next
+      in ["L", "qDCCC"]  ; retorno += "8" ; estado = "qL" ; @indice += 1 ; next
+      in ["I", "qDCCC"]  ; retorno += "8" ; estado = "qI" ; @indice += 1 ; next
+      in ["V", "qDCCC"]  ; retorno += "8" ; estado = "qV" ; @indice += 1 ; next
+      in ["", "qDCCC"]   ; retorno += "8" ; puts "Aceito: #{@cadeia} = #{retorno.to_i}00" ; break
+      in ["X", "qCD"]    ; retorno += "" ; estado = "qX" ; @indice += 1 ; next
+      in ["L", "qCD"]    ; retorno += "" ; estado = "qL" ; @indice += 1 ; next
+      in ["I", "qCD"]    ; retorno += "0" ; estado = "qI" ; @indice += 1 ; next
+      in ["V", "qCD"]    ; retorno += "0" ; estado = "qV" ; @indice += 1 ; next
+      in ["", "qCD"]     ; retorno += "" ; puts "Aceito: #{@cadeia} = #{retorno.to_i}00" ; break
+      in ["X", "qCM"]    ; retorno += "" ; estado = "qX" ; @indice += 1 ; next
+      in ["L", "qCM"]    ; retorno += "" ; estado = "qL" ; @indice += 1 ; next
+      in ["I", "qCM"]    ; retorno += "0" ; estado = "qI" ; @indice += 1 ; next
+      in ["V", "qCM"]    ; retorno += "0" ; estado = "qV" ; @indice += 1 ; next
+      in ["", "qCM"]     ; retorno += "" ; puts "Aceito: #{@cadeia} = #{retorno.to_i}00" ; break
+
       # --- Dezenas ---
       in ["X", "q0"]    ; estado = "qX"
       in ["L", "q0"]    ; estado = "qL"
@@ -91,7 +147,7 @@ class TDF
   end
 end
 
-print "Digite o número romano: "
+print "Digite o número romano (I a CMXCIX): "
 entrada = gets.chomp
 
 tdf = TDF.new(entrada)
