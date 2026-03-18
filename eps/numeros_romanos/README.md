@@ -204,3 +204,6 @@ e exibe cada transição de estado até a aceitação ou erro.
 ---
 
 ## Diagrama
+Abaixo um esboço do diagrama para geração dos estados e implementação do código em ruby:
+
+<img width="4213" height="3999" alt="Diagrama em branco" src="https://github.com/user-attachments/assets/934255ad-cbd2-4d69-98b5-85602ad6677c" />
