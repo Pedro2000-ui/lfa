@@ -1,4 +1,4 @@
-# Linguagens Formais e Automatos
+# Linguagens Formais e Autômatos
 
 Repositório voltado para projetos e exercícios da disciplina de **Linguagens Formais e Automatos**.
 
