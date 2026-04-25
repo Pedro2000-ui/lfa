@@ -192,17 +192,6 @@ resultado = "1999".to_i = 1999
 retorno = "4" + "2" = "42"
 resultado = "42".to_i = 42
 
----
-
-## Execução
-
-    ruby romanos.rb
-
-A máquina solicita a entrada ao usuário, processa caractere a caractere
-e exibe cada transição de estado até a aceitação ou erro.
-
----
-
 ## Diagrama
 Abaixo um esboço do diagrama para geração dos estados e implementação do código em ruby:
 

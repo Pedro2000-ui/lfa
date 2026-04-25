@@ -17,4 +17,5 @@ Implementações e experimentos relacionados aos conteúdos da disciplina.
 ### EPs
 Projetos completos desenvolvidos durante a disciplina.
 
-- [Números Romanos](eps/numeros_romanos/README.md)
+- [Números Romanos](eps/numeros_romanos/docs/README.md)
+- [Reconhecedor de Expressões Aritméticas](eps/reconhecedor_expressoes_aritmeticas/docs/README.md)
