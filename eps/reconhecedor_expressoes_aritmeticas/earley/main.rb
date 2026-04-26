@@ -1,5 +1,6 @@
 require_relative "earley"
 require_relative "gramatica"
+require_relative "arvore"
 
 regras = [
   # soma/subtração
@@ -59,6 +60,11 @@ entradas = [
 ]
 
 entradas.each do |input|
-  resultado = parser.parse(input) ? 'Aceito' : 'Rejeitado'
-  puts "#{input} => #{resultado}\n\n"
+  if parser.parse(input)
+    arvore = Arvore.new(input).parse
+    puts "#{input} => #{arvore}"
+  else
+    puts "#{input} => Rejeitado"
+  end
+  puts
 end
