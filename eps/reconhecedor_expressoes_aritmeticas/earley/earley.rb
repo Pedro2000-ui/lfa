@@ -3,11 +3,11 @@ require 'pastel'
 require_relative 'gramatica'
 require_relative 'estado'
 
-
 class EarleyParser
-  attr_reader :gramatica, :pastel
+  attr_reader :gramatica, :pastel, :imprimir_regras_producao
   
   def initialize(gramatica)
+    @imprimir_regras_producao = imprimir_regras_producao = false
     @pastel = Pastel.new
     
     @gramatica = gramatica
@@ -25,16 +25,19 @@ class EarleyParser
 
     predict(Estado.new(@gramatica.regras[0], 0, 0, "Regra inicial"), 0)
 
-    puts "\nLendo os caracteres... \n\n"
-    
+    if (imprimir_regras_producao)
+      puts "\nLendo os caracteres... \n\n"
+    end
     #entrada.split('').each_with_index do |item, index|
     (0..entrada.size).each do |index|
-      if (index == entrada.size)
-        puts pastel.red("\n================ Posição: #{index} ================")
-      else
-        puts pastel.red("\n==== Caracter: #{entrada[index]}, Posição: #{index} ========")
-      end
       
+      if (imprimir_regras_producao)
+        if (index == entrada.size)
+          puts pastel.red("\n================ Posição: #{index} ================")
+        else
+          puts pastel.red("\n==== Caracter: #{entrada[index]}, Posição: #{index} ========")
+        end
+      end
       until @tabela[index].empty?
         estado = @tabela[index].take!
         if estado.completo?
@@ -50,9 +53,10 @@ class EarleyParser
       end
     end
 
-    puts pastel.red("\n================ Fim de predição ================\n")
-
-    puts pastel.magenta(@tabela)
+    if (imprimir_regras_producao)
+      puts pastel.red("\n================ Fim de predição ================\n")
+      puts pastel.magenta(@tabela)
+    end
     final_is_valid?(@tabela[entrada.length])
   end
 
@@ -67,21 +71,27 @@ class EarleyParser
       if regra.esquerda == estado.next_symbol
         novo_estado = Estado.new(regra, 0, index, "Predito de #{estado}")
         @tabela[index] << novo_estado
-        puts pastel.green("[Predict] Adicionando regra #{novo_estado} de Esquerda: #{regra.esquerda} e próximo símbolo: #{estado.next_symbol}")
+        if (imprimir_regras_producao)
+          puts pastel.green("[Predict] Adicionando regra #{novo_estado} de Esquerda: #{regra.esquerda} e próximo símbolo: #{estado.next_symbol}")
+        end
       end
     end
   end
 
   def scan(estado, index)
     prox_estado = estado.advance(index, estado)
-    puts pastel.yellow "[Scan] Proximo estado: #{prox_estado} em S(#{index+1})"
+    if (imprimir_regras_producao)
+      puts pastel.yellow "[Scan] Proximo estado: #{prox_estado} em S(#{index+1})"
+    end
     @tabela[index + 1] << prox_estado
   end
 
   def complete(estado, index)
     @tabela[estado.inicio].estados.each do |estado_candidato|
       if estado_candidato.next_symbol == estado.regra.esquerda
-        puts pastel.cyan "[Complete] Estado Candidato: #{estado_candidato}"
+        if (imprimir_regras_producao)
+          puts pastel.cyan "[Complete] Estado Candidato: #{estado_candidato}"
+        end
         @tabela[index] << estado_candidato.complete(index-1,estado, estado_candidato)
       end
     end
