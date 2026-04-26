@@ -162,3 +162,17 @@ ruby main.rb
 ```
 
 ## Execução Reconhecedor CYK
+
+No arquivo ```cyk.rb```
+
+Defina a variável abaixo como ```true``` - para impressão das regras de produção no terminal - ou ```false``` - para a não impressão.
+
+```
+@imprimir_regras_producao = imprimir_regras_producao = false
+```
+
+Para executar o algoritmo principal, execute os comandos abaixo:
+```
+cd eps/reconhecedor_expressoes_aritmeticas/cyk
+ruby main.rb
+```
