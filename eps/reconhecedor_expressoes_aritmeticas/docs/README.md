@@ -144,3 +144,21 @@ SUB_R    ->  T_MENOS  T
 6. Lado direito da soma: `T -> P -> U -> F -> N '3'`.
 7. O lado direito da subtração principal: `T -> T '/' P`, com `T -> P -> U -> F -> N '3'`.
 8. O `P` da divisão reduz a `U -> F -> '(' E ')'`, onde dentro `E -> E '+' T`, com `E -> T -> P -> U -> F -> N '6'` e `T -> P -> U -> F -> N '3'`.
+   
+## Execução Reconhecedor Earley
+
+No arquivo ```earley.rb```
+
+Defina a variável abaixo como ```true``` - para impressão das regras de produção no terminal - ou ```false``` - para a não impressão.
+
+```
+@imprimir_regras_producao = imprimir_regras_producao = false
+```
+
+Para executar o algoritmo principal, execute os comandos abaixo:
+```
+cd eps/reconhecedor_expressoes_aritmeticas/earley
+ruby main.rb
+```
+
+## Execução Reconhecedor CYK
