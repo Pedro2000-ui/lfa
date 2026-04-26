@@ -94,13 +94,13 @@ T_8  ->  '8'    T_9  ->  '9'
 ```
 /* Número: sequência de dígitos */
 NUM      ->  T_0 | T_1 | T_2 | T_3 | T_4 | T_5 | T_6 | T_7 | T_8 | T_9
-NUM      ->  NUM DIGIT_NT
-DIGIT_NT ->  T_0 | T_1 | T_2 | T_3 | T_4 | T_5 | T_6 | T_7 | T_8 | T_9
+NUM      ->  NUM DIGITO_NT
+DIGITO_NT ->  T_0 | T_1 | T_2 | T_3 | T_4 | T_5 | T_6 | T_7 | T_8 | T_9
 
 /* Parênteses: F -> '(' E ')'  =>  binarizado */
 F        ->  NUM
-F        ->  T_EPAR  PAREN_R
-PAREN_R  ->  E  T_DPAR
+F        ->  T_EPAR  PAREN_D
+PAREN_D  ->  E  T_DPAR
 
 /* Unário negativo: U -> '-' U */
 U        ->  F
